@@ -7,7 +7,6 @@ interface LeetCodeStats {
   easySolved: number
   mediumSolved: number
   hardSolved: number
-  ranking: number | null
   contestRating: number | null
 }
 
@@ -31,7 +30,6 @@ async function fetchLeetCodeStats(): Promise<LeetCodeStats | null> {
           easySolved: data.easySolved || 0,
           mediumSolved: data.mediumSolved || 0,
           hardSolved: data.hardSolved || 0,
-          ranking: data.ranking || null,
           contestRating: data.contributionPoint || null,
         }
       }
@@ -50,7 +48,6 @@ async function fetchLeetCodeStats(): Promise<LeetCodeStats | null> {
             }
           }
           profile {
-            ranking
             reputation
           }
         }
@@ -105,7 +102,6 @@ async function fetchLeetCodeStats(): Promise<LeetCodeStats | null> {
       easySolved: easySubmission?.count || 0,
       mediumSolved: mediumSubmission?.count || 0,
       hardSolved: hardSubmission?.count || 0,
-      ranking: matchedUser.profile?.ranking || null,
       contestRating: matchedUser.profile?.reputation || null,
     }
   } catch (error) {
@@ -127,7 +123,6 @@ export async function GET() {
           easySolved: 0,
           mediumSolved: 0,
           hardSolved: 0,
-          ranking: null,
           contestRating: null,
         },
         { status: 200 }
@@ -144,7 +139,6 @@ export async function GET() {
         easySolved: 0,
         mediumSolved: 0,
         hardSolved: 0,
-        ranking: null,
         contestRating: null,
       },
       { status: 200 }

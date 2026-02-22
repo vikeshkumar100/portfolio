@@ -9,7 +9,6 @@ interface LeetCodeStats {
   easySolved: number
   mediumSolved: number
   hardSolved: number
-  ranking: number | null
   contestRating: number | null
 }
 
@@ -18,14 +17,12 @@ const fallbackStats: LeetCodeStats = {
   easySolved: 0,
   mediumSolved: 0,
   hardSolved: 0,
-  ranking: null,
   contestRating: null,
 }
 
 export function LeetCodeSection() {
   const [stats, setStats] = useState<LeetCodeStats>(fallbackStats)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchStats() {
@@ -38,11 +35,9 @@ export function LeetCodeSection() {
         }
         
         setStats(data)
-        setError(null)
       } catch (err) {
         const message = err instanceof Error ? err.message : "Failed to fetch stats"
         console.error("LeetCode API error:", message)
-        setError(message)
         // Use fallback stats
       } finally {
         setLoading(false)
@@ -121,25 +116,6 @@ export function LeetCodeSection() {
               </div>
             )}
           </div>
-
-          {/* Ranking */}
-          {stats.ranking && (
-            <div className="rounded-xl border border-border bg-card/50 p-6 transition-colors duration-200 hover:border-primary/20">
-              <div className="mb-3 flex items-center gap-2">
-                <Trophy className="h-4 w-4 text-primary" />
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Ranking
-                </h3>
-              </div>
-              {loading ? (
-                <div className="h-8 w-20 animate-pulse rounded bg-muted" />
-              ) : (
-                <p className="text-3xl font-bold text-foreground">
-                  {stats.ranking.toLocaleString()}
-                </p>
-              )}
-            </div>
-          )}
 
           {/* Contest Rating */}
           {stats.contestRating && (
