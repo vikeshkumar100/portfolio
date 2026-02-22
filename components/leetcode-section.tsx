@@ -25,15 +25,24 @@ const fallbackStats: LeetCodeStats = {
 export function LeetCodeSection() {
   const [stats, setStats] = useState<LeetCodeStats>(fallbackStats)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchStats() {
       try {
         const res = await fetch("/api/leetcode-stats")
-        if (!res.ok) throw new Error("Failed")
         const data = await res.json()
+        
+        if (!res.ok) {
+          throw new Error(data.error || "Failed to fetch stats")
+        }
+        
         setStats(data)
-      } catch {
+        setError(null)
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Failed to fetch stats"
+        console.error("LeetCode API error:", message)
+        setError(message)
         // Use fallback stats
       } finally {
         setLoading(false)

@@ -14,23 +14,29 @@ interface LeetCodeStats {
 async function fetchLeetCodeStats(): Promise<LeetCodeStats | null> {
   try {
     // Try using alfa-leetcode-api proxy first (more reliable)
-    const proxyRes = await fetch(
-      `https://alfa-leetcode-api.onrender.com/${LEETCODE_USERNAME}/solved`,
-      {
-        next: { revalidate: 3600 },
-      }
-    )
+    try {
+      const proxyRes = await fetch(
+        `https://alfa-leetcode-api.onrender.com/${LEETCODE_USERNAME}/solved`,
+        {
+          next: { revalidate: 3600 },
+          timeout: 5000,
+        }
+      )
 
-    if (proxyRes.ok) {
-      const data = await proxyRes.json()
-      return {
-        totalSolved: data.solvedProblem || 0,
-        easySolved: data.easySolved || 0,
-        mediumSolved: data.mediumSolved || 0,
-        hardSolved: data.hardSolved || 0,
-        ranking: data.ranking || null,
-        contestRating: data.contributionPoint || null,
+      if (proxyRes.ok) {
+        const data = await proxyRes.json()
+        console.log("LeetCode stats fetched from proxy API")
+        return {
+          totalSolved: data.solvedProblem || 0,
+          easySolved: data.easySolved || 0,
+          mediumSolved: data.mediumSolved || 0,
+          hardSolved: data.hardSolved || 0,
+          ranking: data.ranking || null,
+          contestRating: data.contributionPoint || null,
+        }
       }
+    } catch (proxyError) {
+      console.warn("Proxy API failed, trying GraphQL:", proxyError)
     }
 
     // Fallback to direct GraphQL query
@@ -56,17 +62,18 @@ async function fetchLeetCodeStats(): Promise<LeetCodeStats | null> {
       headers: {
         "Content-Type": "application/json",
         "Referer": "https://leetcode.com",
-        "User-Agent": "Mozilla/5.0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       },
       body: JSON.stringify({
         query,
         variables: { username: LEETCODE_USERNAME },
       }),
       next: { revalidate: 3600 },
+      timeout: 5000,
     })
 
     if (!res.ok) {
-      console.error("LeetCode API error:", res.status, await res.text())
+      console.error("LeetCode GraphQL error:", res.status, await res.text())
       return null
     }
 
@@ -80,7 +87,7 @@ async function fetchLeetCodeStats(): Promise<LeetCodeStats | null> {
     const matchedUser = data?.data?.matchedUser
 
     if (!matchedUser) {
-      console.error("No matched user found")
+      console.error("No matched user found for username:", LEETCODE_USERNAME)
       return null
     }
 
@@ -92,6 +99,7 @@ async function fetchLeetCodeStats(): Promise<LeetCodeStats | null> {
     )
     const hardSubmission = submissions.find((s: any) => s.difficulty === "Hard")
 
+    console.log("LeetCode stats fetched from GraphQL")
     return {
       totalSolved: allSubmission?.count || 0,
       easySolved: easySubmission?.count || 0,
@@ -111,17 +119,35 @@ export async function GET() {
     const stats = await fetchLeetCodeStats()
 
     if (!stats) {
+      // Return 200 with null data instead of 500 error
+      // This allows the frontend to handle missing data gracefully
       return NextResponse.json(
-        { error: "Failed to fetch LeetCode stats" },
-        { status: 500 }
+        {
+          totalSolved: 0,
+          easySolved: 0,
+          mediumSolved: 0,
+          hardSolved: 0,
+          ranking: null,
+          contestRating: null,
+        },
+        { status: 200 }
       )
     }
 
     return NextResponse.json(stats)
-  } catch {
+  } catch (error) {
+    console.error("LeetCode route error:", error)
+    // Return 200 with empty data instead of 500 error
     return NextResponse.json(
-      { error: "Failed to fetch LeetCode stats" },
-      { status: 500 }
+      {
+        totalSolved: 0,
+        easySolved: 0,
+        mediumSolved: 0,
+        hardSolved: 0,
+        ranking: null,
+        contestRating: null,
+      },
+      { status: 200 }
     )
   }
 }
