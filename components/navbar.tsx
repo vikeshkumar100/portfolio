@@ -1,34 +1,38 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { useTheme } from "next-themes"
-import { Menu, X, Sun, Moon } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { Download, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+const resumeFileId = "1lmD4OsKDWLEnFjPBrn7Av51zgLkS0_8s"
+const resumeDownloadUrl = `https://drive.google.com/uc?export=download&id=${resumeFileId}`
+
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
+  { label: "Stack", href: "#tech" },
   { label: "Projects", href: "#projects" },
-  { label: "Architecture", href: "#architecture" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ]
 
 export function Navbar() {
+  const [visible, setVisible] = useState(true)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("")
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const lastScrollY = useRef(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      const currentY = window.scrollY
+      setScrolled(currentY > 50)
+
+      if (currentY > lastScrollY.current && currentY > 100) {
+        setVisible(false)
+      } else {
+        setVisible(true)
+      }
+      lastScrollY.current = currentY
 
       const sections = navLinks.map((link) => link.href.substring(1))
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -51,17 +55,18 @@ export function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        visible ? "translate-y-0" : "-translate-y-full",
         scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
+          ? "bg-background/60 backdrop-blur-xl border-b border-border/50"
           : "bg-transparent"
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="#"
-          className="text-lg font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
+          className="font-mono text-lg font-bold tracking-tight text-foreground transition-colors hover:text-primary"
         >
-          Vikesh
+          VK
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -70,7 +75,7 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                "rounded-md px-3 py-2 font-mono text-xs font-medium uppercase tracking-wider transition-colors",
                 activeSection === link.href.substring(1)
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"
@@ -79,47 +84,25 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="ml-2 rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </button>
-          )}
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </button>
-          )}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="Toggle menu"
+        <div className="hidden items-center md:flex">
+          <a
+            href={resumeDownloadUrl}
+            className="inline-flex items-center gap-2 rounded-lg border border-primary/50 px-4 py-2 font-mono text-xs font-medium text-primary transition-all hover:bg-primary/10"
           >
-            {mobileOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
+            <Download className="h-3.5 w-3.5" />
+            Resume
+          </a>
         </div>
+
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground md:hidden"
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
       {mobileOpen && (
@@ -131,7 +114,7 @@ export function Navbar() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
+                  "rounded-md px-3 py-2.5 font-mono text-sm font-medium uppercase tracking-wider transition-colors",
                   activeSection === link.href.substring(1)
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground"
@@ -140,6 +123,14 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={resumeDownloadUrl}
+              onClick={() => setMobileOpen(false)}
+              className="mt-3 inline-flex items-center gap-2 rounded-lg border border-primary/50 px-4 py-2.5 font-mono text-sm font-medium text-primary transition-all hover:bg-primary/10"
+            >
+              <Download className="h-3.5 w-3.5" />
+              Resume
+            </a>
           </div>
         </div>
       )}

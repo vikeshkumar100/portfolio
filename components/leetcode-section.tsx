@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { SectionWrapper } from "@/components/section-wrapper"
-import { Code2, Trophy, Target, ExternalLink } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 
 interface LeetCodeStats {
   totalSolved: number
@@ -13,10 +13,10 @@ interface LeetCodeStats {
 }
 
 const fallbackStats: LeetCodeStats = {
-  totalSolved: 0,
-  easySolved: 0,
-  mediumSolved: 0,
-  hardSolved: 0,
+  totalSolved: 289,
+  easySolved: 145,
+  mediumSolved: 133,
+  hardSolved: 11,
   contestRating: null,
 }
 
@@ -29,16 +29,17 @@ export function LeetCodeSection() {
       try {
         const res = await fetch("/api/leetcode-stats")
         const data = await res.json()
-        
+
         if (!res.ok) {
           throw new Error(data.error || "Failed to fetch stats")
         }
-        
-        setStats(data)
+
+        if (data.totalSolved > 0) {
+          setStats(data)
+        }
       } catch (err) {
         const message = err instanceof Error ? err.message : "Failed to fetch stats"
         console.error("LeetCode API error:", message)
-        // Use fallback stats
       } finally {
         setLoading(false)
       }
@@ -47,106 +48,54 @@ export function LeetCodeSection() {
     fetchStats()
   }, [])
 
+  const statItems = [
+    { label: "Solved", value: stats.totalSolved, color: "text-foreground" },
+    { label: "Easy", value: stats.easySolved, color: "text-green-400" },
+    { label: "Medium", value: stats.mediumSolved, color: "text-yellow-400" },
+    { label: "Hard", value: stats.hardSolved, color: "text-red-400" },
+  ]
+
   return (
-    <SectionWrapper id="leetcode" className="py-24 px-6">
+    <SectionWrapper id="leetcode" className="py-28 px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-4 text-sm font-medium uppercase tracking-widest text-primary">
-          Problem Solving & DSA
-        </div>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          LeetCode Progress
-        </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Consistent problem-solving practice with strong foundation in Data
-          Structures & Algorithms.
-        </p>
-
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Total Solved */}
-          <div className="rounded-xl border border-border bg-card/50 p-6 transition-colors duration-200 hover:border-primary/20">
-            <div className="mb-3 flex items-center gap-2">
-              <Code2 className="h-4 w-4 text-primary" />
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                Total Solved
-              </h3>
-            </div>
-            {loading ? (
-              <div className="h-8 w-16 animate-pulse rounded bg-muted" />
-            ) : (
-              <p className="text-3xl font-bold text-foreground">
-                {stats.totalSolved}
-              </p>
-            )}
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
+              // 06 Problem Solving
+            </p>
+            <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
+              Problem Solving
+            </h2>
           </div>
-
-          {/* Difficulty Breakdown */}
-          <div className="rounded-xl border border-border bg-card/50 p-6 transition-colors duration-200 hover:border-primary/20">
-            <div className="mb-3 flex items-center gap-2">
-              <Target className="h-4 w-4 text-primary" />
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                Breakdown
-              </h3>
-            </div>
-            {loading ? (
-              <div className="space-y-2">
-                <div className="h-5 w-24 animate-pulse rounded bg-muted" />
-                <div className="h-5 w-24 animate-pulse rounded bg-muted" />
-                <div className="h-5 w-24 animate-pulse rounded bg-muted" />
-              </div>
-            ) : (
-              <div className="space-y-1 text-sm">
-                <div className="flex items-center justify-between">
-                  <span className="text-green-500">Easy</span>
-                  <span className="font-mono font-semibold text-foreground">
-                    {stats.easySolved}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-yellow-500">Medium</span>
-                  <span className="font-mono font-semibold text-foreground">
-                    {stats.mediumSolved}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-red-500">Hard</span>
-                  <span className="font-mono font-semibold text-foreground">
-                    {stats.hardSolved}
-                  </span>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Contest Rating */}
-          {stats.contestRating && (
-            <div className="rounded-xl border border-border bg-card/50 p-6 transition-colors duration-200 hover:border-primary/20">
-              <div className="mb-3 flex items-center gap-2">
-                <Trophy className="h-4 w-4 text-primary" />
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Contest Rating
-                </h3>
-              </div>
-              {loading ? (
-                <div className="h-8 w-16 animate-pulse rounded bg-muted" />
-              ) : (
-                <p className="text-3xl font-bold text-foreground">
-                  {stats.contestRating}
-                </p>
-              )}
-            </div>
-          )}
-        </div>
-
-        <div className="mt-8 text-center">
           <a
-            href="https://leetcode.com/u/vikeshkapoor"
+            href="https://leetcode.com/u/vikeshkapoor/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:underline"
+            className="inline-flex items-center gap-2 font-mono text-xs font-medium text-primary transition-colors hover:underline"
           >
-            View LeetCode Profile
-            <ExternalLink className="h-3.5 w-3.5" />
+            Profile
+            <ExternalLink className="h-3 w-3" />
           </a>
+        </div>
+
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {statItems.map((item) => (
+            <div
+              key={item.label}
+              className="rounded-xl border border-[#1e1e1e] bg-[#111111] p-5 text-center shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)]"
+            >
+              {loading ? (
+                <div className="mx-auto h-9 w-14 animate-pulse rounded bg-muted" />
+              ) : (
+                <p className={`font-mono text-3xl font-bold ${item.color}`}>
+                  {item.value}
+                </p>
+              )}
+              <p className="mt-1 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                {item.label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </SectionWrapper>

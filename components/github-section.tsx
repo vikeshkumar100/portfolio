@@ -47,24 +47,34 @@ export function GitHubSection() {
   }, [])
 
   return (
-    <SectionWrapper className="py-24 px-6">
+    <SectionWrapper className="py-28 px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-4 text-sm font-medium uppercase tracking-widest text-primary">
-          Open Source
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
+              // 07 GitHub
+            </p>
+            <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
+              Open Source
+            </h2>
+          </div>
+          <a
+            href="https://github.com/Vikeshkumar100"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-mono text-xs font-medium text-primary transition-colors hover:underline"
+          >
+            Profile
+            <ExternalLink className="h-3 w-3" />
+          </a>
         </div>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Pinned Repositories
-        </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Pinned repositories from my GitHub profile.
-        </p>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {loading ? (
             Array.from({ length: 6 }).map((_, i) => (
                 <div
                   key={i}
-                  className="animate-pulse rounded-xl border border-border bg-card/50 p-6"
+                  className="animate-pulse rounded-xl border border-[#1e1e1e] bg-[#111111] p-6"
                 >
                   <div className="mb-3 h-5 w-32 rounded bg-muted" />
                   <div className="mb-2 h-4 w-full rounded bg-muted" />
@@ -72,7 +82,7 @@ export function GitHubSection() {
                 </div>
               ))
           ) : repos.length === 0 ? (
-            <div className="col-span-full rounded-xl border border-border bg-card/50 p-6 text-sm text-muted-foreground">
+            <div className="col-span-full rounded-xl border border-[#1e1e1e] bg-[#111111] p-6 text-sm text-muted-foreground">
               No pinned repositories found. Pin projects on GitHub to show them
               here.
             </div>
@@ -83,7 +93,7 @@ export function GitHubSection() {
                   href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col rounded-xl border border-border bg-card/50 p-6 transition-colors duration-200 hover:border-primary/20 hover:bg-card"
+                  className="group flex flex-col rounded-xl border border-[#1e1e1e] bg-[#111111] p-6 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="mb-2 flex items-center justify-between">
                     <h3 className="font-mono text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
@@ -92,11 +102,11 @@ export function GitHubSection() {
                     <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                   </div>
 
-                  <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mb-4 line-clamp-2 text-[13px] leading-[1.7] text-muted-foreground">
                     {repo.description || "No description"}
                   </p>
 
-                  <div className="mt-auto flex items-center gap-4 text-xs text-muted-foreground">
+                  <div className="mt-auto flex items-center gap-4 font-mono text-xs text-muted-foreground">
                     {repo.primaryLanguage && (
                       <div className="flex items-center gap-1.5">
                         <span
@@ -131,7 +141,7 @@ export function GitHubSection() {
             href="https://github.com/Vikeshkumar100"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:underline"
+            className="inline-flex items-center gap-2 font-mono text-sm font-medium text-primary transition-colors hover:underline"
           >
             View all repositories on GitHub
             <ExternalLink className="h-3.5 w-3.5" />
