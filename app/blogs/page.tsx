@@ -6,6 +6,23 @@ export const metadata: Metadata = {
   title: "Blog | Vikesh Kumar",
   description:
     "Technical write-ups, architecture breakdowns, and development insights from my projects.",
+  openGraph: {
+    title: "Blog | Vikesh Kumar",
+    description:
+      "Technical write-ups, architecture breakdowns, and development insights from my projects.",
+    type: "website",
+    url: "https://vikesh.dev/blogs",
+    siteName: "Vikesh Kumar Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Vikesh Kumar",
+    description:
+      "Technical write-ups, architecture breakdowns, and development insights from my projects.",
+  },
+  alternates: {
+    canonical: "/blogs",
+  },
 }
 
 const blogs = [

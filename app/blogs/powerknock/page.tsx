@@ -3,9 +3,34 @@ import { ArrowLeft, Camera } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "PowerKnock — IoT Smart Access Control System | Vikesh Kumar",
+  title: "PowerKnock – IoT Smart Access Control System using ESP32 and RFID",
   description:
-    "A secure smart access system combining RFID authentication, knock pattern verification, and occupancy detection using ESP32.",
+    "PowerKnock is a secure IoT access control system using ESP32, RFID authentication, knock pattern verification, and HMAC-SHA256 device authentication with a Node.js backend.",
+  keywords: [
+    "IoT access control system",
+    "ESP32 RFID door lock",
+    "smart lock ESP32 project",
+    "IoT authentication Node.js",
+    "HMAC SHA256 device authentication",
+    "RFID smart access system",
+  ],
+  openGraph: {
+    title: "PowerKnock – IoT Smart Access Control System using ESP32 and RFID",
+    description:
+      "PowerKnock is a secure IoT access control system using ESP32, RFID authentication, knock pattern verification, and HMAC-SHA256 device authentication with a Node.js backend.",
+    type: "article",
+    url: "https://vikesh.dev/blogs/powerknock",
+    siteName: "Vikesh Kumar Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PowerKnock – IoT Smart Access Control System using ESP32 and RFID",
+    description:
+      "Secure IoT access control using ESP32, RFID, knock patterns, and HMAC-SHA256 device authentication.",
+  },
+  alternates: {
+    canonical: "/blogs/powerknock",
+  },
 }
 
 const systemFlow = [
@@ -57,8 +82,32 @@ const techTags = [
 ]
 
 export default function PowerKnockBlog() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: "PowerKnock – IoT Smart Access Control System",
+    author: {
+      "@type": "Person",
+      name: "Vikesh Kumar",
+      url: "https://vikesh.dev",
+    },
+    datePublished: "2025-03-01",
+    dateModified: "2025-03-01",
+    url: "https://vikesh.dev/blogs/powerknock",
+    description:
+      "IoT smart access control system using ESP32, RFID authentication, knock patterns and backend device verification.",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://vikesh.dev/blogs/powerknock",
+    },
+  }
+
   return (
     <main className="min-h-screen px-6 pt-28 pb-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto max-w-3xl">
         {/* Back link */}
         <Link
