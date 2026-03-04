@@ -56,14 +56,14 @@ export function LeetCodeSection() {
   ]
 
   return (
-    <SectionWrapper id="leetcode" className="py-28 px-6">
+    <SectionWrapper id="leetcode" className="py-16 sm:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
             <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
               // 06 Problem Solving
             </p>
-            <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
+            <h2 className="mt-3 font-mono text-2xl sm:text-[2.5rem] font-bold tracking-tight text-foreground">
               Problem Solving
             </h2>
           </div>
@@ -71,23 +71,23 @@ export function LeetCodeSection() {
             href="https://leetcode.com/u/vikeshkapoor/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs font-medium text-primary transition-colors hover:underline"
+            className="inline-flex items-center gap-2 font-mono text-xs font-medium text-primary transition-colors hover:underline self-start sm:self-auto"
           >
             Profile
             <ExternalLink className="h-3 w-3" />
           </a>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mt-8 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4">
           {statItems.map((item) => (
             <div
               key={item.label}
-              className="rounded-xl border border-[#1e1e1e] bg-[#111111] p-5 text-center shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)]"
+              className="rounded-xl border border-[#1e1e1e] bg-[#111111] p-3 sm:p-5 text-center shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)]"
             >
               {loading ? (
                 <div className="mx-auto h-9 w-14 animate-pulse rounded bg-muted" />
               ) : (
-                <p className={`font-mono text-3xl font-bold ${item.color}`}>
+                <p className={`font-mono text-2xl sm:text-3xl font-bold ${item.color}`}>
                   {item.value}
                 </p>
               )}

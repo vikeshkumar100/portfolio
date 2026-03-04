@@ -73,23 +73,23 @@ export function ProjectsSection() {
   return (
     <>
       {/* Featured Projects */}
-      <SectionWrapper id="projects" className="py-28 px-6">
+      <SectionWrapper id="projects" className="py-16 sm:py-28 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
             // 02 Featured Projects
           </p>
-          <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
+          <h2 className="mt-3 font-mono text-2xl sm:text-[2.5rem] font-bold tracking-tight text-foreground">
             What I have built
           </h2>
 
-          <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2">
+          <div className="mt-8 sm:mt-12 grid items-stretch gap-4 sm:gap-6 lg:grid-cols-2">
             {featuredProjects.map((project) => (
               <div
                 key={project.title}
                 className={cn(
-                  "group relative flex flex-col rounded-[10px] border p-6 transition-all duration-200 hover:-translate-y-1",
+                  "group relative flex flex-col rounded-[10px] border p-4 sm:p-6 transition-all duration-200 hover:-translate-y-1",
                   project.isLead
-                    ? "border-[rgba(0,212,170,0.35)] bg-[#111111] pt-12 pb-8 shadow-[0_0_20px_rgba(0,212,170,0.08)] hover:border-[rgba(0,212,170,0.5)] hover:shadow-[0_0_30px_rgba(0,212,170,0.15)]"
+                    ? "border-[rgba(0,212,170,0.35)] bg-[#111111] pt-10 sm:pt-12 pb-6 sm:pb-8 shadow-[0_0_20px_rgba(0,212,170,0.08)] hover:border-[rgba(0,212,170,0.5)] hover:shadow-[0_0_30px_rgba(0,212,170,0.15)]"
                     : "border-[#1e1e1e] bg-[#111111] shadow-[0_0_0_1px_#1e1e1e] hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5"
                 )}
               >
@@ -123,7 +123,7 @@ export function ProjectsSection() {
                 )}
 
                 {project.featureGrid && (
-                  <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
+                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
                     {project.featureGrid.map((item: string, i: number) => (
                       <p key={i} className="flex items-start gap-2 text-[13px] leading-[1.6] text-muted-foreground">
                         <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
@@ -170,7 +170,7 @@ export function ProjectsSection() {
                   </div>
                 )}
 
-                <div className="mt-auto flex items-center gap-3 pt-5">
+                <div className="mt-auto flex flex-wrap items-center gap-2 sm:gap-3 pt-4 sm:pt-5">
                   {project.github ? (
                     <a
                       href={project.github}
@@ -219,7 +219,7 @@ export function ProjectsSection() {
       </SectionWrapper>
 
       {/* More Projects */}
-      <SectionWrapper className="py-16 px-6">
+      <SectionWrapper className="py-10 sm:py-16 px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
             // 03 More Projects
@@ -228,11 +228,11 @@ export function ProjectsSection() {
             More work
           </h2>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 sm:mt-8 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {moreProjects.map((project) => (
               <div
                 key={project.title}
-                className="group rounded-[10px] border border-[#1e1e1e] bg-[#111111] p-6 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:scale-[1.02] hover:border-[rgba(0,212,170,0.3)] hover:bg-[#111111]"
+                className="group rounded-[10px] border border-[#1e1e1e] bg-[#111111] p-4 sm:p-6 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:scale-[1.02] hover:border-[rgba(0,212,170,0.3)] hover:bg-[#111111]"
               >
                 <h3 className="font-mono text-sm font-bold text-foreground">
                   {project.title}

@@ -9,7 +9,7 @@ import { ContactSection } from "@/components/contact-section"
 
 function SectionDivider() {
   return (
-    <div className="mx-auto max-w-6xl px-6 py-2">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 py-1 sm:py-2">
       <div className="flex items-center gap-2">
         <div className="h-px flex-1 bg-border" />
         <div className="h-1 w-1 rounded-full bg-primary/40" />

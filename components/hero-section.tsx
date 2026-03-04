@@ -8,7 +8,7 @@ const resumeViewUrl = `https://drive.google.com/file/d/${resumeFileId}/view`
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[100dvh] items-center justify-center px-5 sm:px-6 pt-20 pb-16">
+    <section className="relative flex min-h-[100dvh] items-center justify-center px-4 sm:px-6 pt-20 pb-12 sm:pb-16">
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <h1
           className="animate-fade-up font-mono font-bold uppercase tracking-wider text-foreground"
@@ -18,14 +18,14 @@ export function HeroSection() {
         </h1>
 
         <p
-          className="animate-fade-up mt-6 font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary sm:text-base sm:tracking-[0.25em]"
+          className="animate-fade-up mt-4 sm:mt-6 font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary sm:text-base sm:tracking-[0.25em]"
           style={{ animationDelay: "150ms" }}
         >
           Backend-Focused Full Stack Developer
         </p>
 
         <div
-          className="animate-fade-up mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+          className="animate-fade-up mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
           style={{ animationDelay: "300ms" }}
         >
           <a
@@ -86,20 +86,20 @@ export function HeroSection() {
           </a>
         </div>
 
-        <p
-          className="animate-fade-up mt-8 font-mono text-xs tracking-wide text-muted-foreground sm:text-sm"
+        <div
+          className="animate-fade-up mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-mono text-[11px] tracking-wide text-muted-foreground sm:text-sm"
           style={{ animationDelay: "600ms" }}
         >
-          <span className="text-primary/70">MCA @ VIT</span>{" "}
-          <span className="text-primary/50">·</span>{" "}
-          <span className="text-primary/70">CGPA 9.46</span>{" "}
-          <span className="text-primary/50">·</span>{" "}
-          <span className="text-primary/70">Backend</span>{" "}
-          <span className="text-primary/50">·</span>{" "}
-          <span className="text-primary/70">Real-Time Apps</span>{" "}
-          <span className="text-primary/50">·</span>{" "}
+          <span className="text-primary/70">MCA @ VIT</span>
+          <span className="text-primary/50">·</span>
+          <span className="text-primary/70">CGPA 9.46</span>
+          <span className="text-primary/50">·</span>
+          <span className="text-primary/70">Backend</span>
+          <span className="text-primary/50">·</span>
+          <span className="text-primary/70">Real-Time Apps</span>
+          <span className="text-primary/50">·</span>
           <span className="text-primary/70">Cloud Learning</span>
-        </p>
+        </div>
       </div>
     </section>
   )

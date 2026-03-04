@@ -28,12 +28,12 @@ const education = [
 
 export function EducationSection() {
   return (
-    <SectionWrapper id="education" className="px-6 py-28">
+    <SectionWrapper id="education" className="px-4 sm:px-6 py-16 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
           // 05 Academics
         </p>
-        <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
+        <h2 className="mt-3 font-mono text-2xl sm:text-[2.5rem] font-bold tracking-tight text-foreground">
           Education
         </h2>
 
@@ -51,17 +51,17 @@ export function EducationSection() {
               </div>
 
               {/* Card */}
-              <div className="w-full rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-7 py-6 transition-[border-color] duration-200 ease-in-out hover:border-[rgba(0,212,170,0.25)]">
+              <div className="w-full rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-4 sm:px-7 py-5 sm:py-6 transition-[border-color] duration-200 ease-in-out hover:border-[rgba(0,212,170,0.25)]">
                 {/* Row 1: Degree + CGPA/Year */}
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <h3 className="text-base font-bold text-foreground">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-start sm:justify-between gap-2">
+                  <h3 className="text-sm sm:text-base font-bold text-foreground">
                     {item.degree}
                   </h3>
-                  <div className="flex shrink-0 items-center gap-3">
-                    <span className="rounded-md bg-primary/15 px-3 py-1 font-mono text-xs font-medium text-primary">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <span className="rounded-md bg-primary/15 px-2 sm:px-3 py-1 font-mono text-[11px] sm:text-xs font-medium text-primary">
                       CGPA: {item.cgpa}
                     </span>
-                    <span className="font-mono text-xs text-muted-foreground">
+                    <span className="font-mono text-[11px] sm:text-xs text-muted-foreground">
                       {item.years}
                     </span>
                   </div>

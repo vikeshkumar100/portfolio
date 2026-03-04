@@ -72,7 +72,7 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-6 py-4 md:grid-cols-[1fr_auto_1fr]">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:grid md:grid-cols-[1fr_auto_1fr]">
         {/* Left – Logo */}
         <div className="flex items-center">
           <Link
@@ -109,8 +109,8 @@ export function Navbar() {
               className={cn(
                 "inline-flex items-center gap-2 rounded-lg border px-4 py-2 font-mono text-xs font-medium transition-all",
                 pathname.startsWith("/blogs")
-                  ? "border-[#00d4aa] text-[#00d4aa] bg-[rgba(0,212,170,0.1)]"
-                  : "border-[#1e1e1e] text-[#e8e8e8] hover:border-[#00d4aa] hover:text-[#00d4aa]"
+                  ? "border-primary text-primary bg-primary/10"
+                  : "border-border text-foreground hover:border-primary hover:text-primary"
               )}
             >
               <BookOpen className="h-3.5 w-3.5" />

@@ -47,14 +47,14 @@ export function GitHubSection() {
   }, [])
 
   return (
-    <SectionWrapper className="py-28 px-6">
+    <SectionWrapper className="py-16 sm:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
             <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
               // 07 GitHub
             </p>
-            <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
+            <h2 className="mt-3 font-mono text-2xl sm:text-[2.5rem] font-bold tracking-tight text-foreground">
               Open Source
             </h2>
           </div>
@@ -62,14 +62,14 @@ export function GitHubSection() {
             href="https://github.com/Vikeshkumar100"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs font-medium text-primary transition-colors hover:underline"
+            className="inline-flex items-center gap-2 font-mono text-xs font-medium text-primary transition-colors hover:underline self-start sm:self-auto"
           >
             Profile
             <ExternalLink className="h-3 w-3" />
           </a>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 sm:mt-12 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {loading ? (
             Array.from({ length: 6 }).map((_, i) => (
                 <div
@@ -93,7 +93,7 @@ export function GitHubSection() {
                   href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col rounded-xl border border-[#1e1e1e] bg-[#111111] p-6 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5"
+                  className="group flex flex-col rounded-xl border border-[#1e1e1e] bg-[#111111] p-4 sm:p-6 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="mb-2 flex items-center justify-between">
                     <h3 className="font-mono text-sm font-semibold text-foreground transition-colors group-hover:text-primary">

@@ -54,20 +54,20 @@ const learningItems = [
 
 export function SkillsSection() {
   return (
-    <SectionWrapper id="tech" className="py-28 px-6">
+    <SectionWrapper id="tech" className="py-16 sm:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
           // 01 Tech Stack
         </p>
-        <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
+        <h2 className="mt-3 font-mono text-2xl sm:text-[2.5rem] font-bold tracking-tight text-foreground">
           What I build with
         </h2>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 sm:mt-12 grid gap-4 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {techStack.map((cat) => (
             <div
               key={cat.category}
-              className="group rounded-xl border border-[#1e1e1e] bg-[#111111] p-8 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5"
+              className="group rounded-xl border border-[#1e1e1e] bg-[#111111] p-5 sm:p-8 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5"
             >
               <h3 className="mb-5 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-primary">
                 {cat.category}
@@ -89,8 +89,8 @@ export function SkillsSection() {
           ))}
         </div>
 
-        <div className="mt-8 grid gap-8 sm:grid-cols-2">
-          <div className="group rounded-xl border border-[#1e1e1e] bg-[#111111] p-8 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5">
+        <div className="mt-4 sm:mt-8 grid gap-4 sm:gap-8 sm:grid-cols-2">
+          <div className="group rounded-xl border border-[#1e1e1e] bg-[#111111] p-5 sm:p-8 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5">
             <h3 className="mb-5 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-primary">
               Languages
             </h3>
@@ -107,7 +107,7 @@ export function SkillsSection() {
             </div>
           </div>
 
-          <div className="group rounded-xl border border-[#1e1e1e] bg-[#111111] p-8 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5">
+          <div className="group rounded-xl border border-[#1e1e1e] bg-[#111111] p-5 sm:p-8 shadow-[0_0_0_1px_#1e1e1e] transition-all duration-200 hover:-translate-y-1 hover:border-[rgba(0,212,170,0.3)] hover:shadow-lg hover:shadow-primary/5">
             <h3 className="mb-5 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-primary">
               Learning
             </h3>

@@ -48,12 +48,12 @@ export function ContactSection() {
   }
 
   return (
-    <SectionWrapper id="contact" className="py-28 px-6">
+    <SectionWrapper id="contact" className="py-16 sm:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
           // 08 Contact
         </p>
-        <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
+        <h2 className="mt-3 font-mono text-2xl sm:text-[2.5rem] font-bold tracking-tight text-foreground">
           Get in touch
         </h2>
         <p className="mt-4 max-w-2xl text-[14px] leading-[1.7] text-muted-foreground">
@@ -61,7 +61,7 @@ export function ContactSection() {
           project or role in mind? Send me a message.
         </p>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-5">
+        <div className="mt-8 sm:mt-12 grid gap-8 sm:gap-12 lg:grid-cols-5">
           <form onSubmit={handleSubmit} className="space-y-5 lg:col-span-3">
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
@@ -79,7 +79,7 @@ export function ContactSection() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, name: e.target.value }))
                   }
-                  className="w-full rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
+                  className="w-full rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-3 sm:px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
                   placeholder="Your name"
                 />
               </div>
@@ -98,7 +98,7 @@ export function ContactSection() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, email: e.target.value }))
                   }
-                  className="w-full rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
+                  className="w-full rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-3 sm:px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
                   placeholder="your@email.com"
                 />
               </div>
@@ -119,7 +119,7 @@ export function ContactSection() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, message: e.target.value }))
                 }
-                className="w-full resize-none rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
+                className="w-full resize-none rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-3 sm:px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
                 placeholder="Tell me about your project or opportunity..."
               />
             </div>
@@ -158,7 +158,7 @@ export function ContactSection() {
           </form>
 
           <div className="lg:col-span-2">
-            <div className="rounded-[10px] border border-[#1e1e1e] bg-[#111111] p-6">
+            <div className="rounded-[10px] border border-[#1e1e1e] bg-[#111111] p-4 sm:p-6">
               <h3 className="mb-4 font-mono text-sm font-semibold text-foreground">
                 Other ways to reach me
               </h3>
