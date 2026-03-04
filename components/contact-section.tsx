@@ -48,15 +48,15 @@ export function ContactSection() {
   }
 
   return (
-    <SectionWrapper id="contact" className="py-24 px-6">
+    <SectionWrapper id="contact" className="py-28 px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-4 text-sm font-medium uppercase tracking-widest text-primary">
-          Contact
-        </div>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
+          // 08 Contact
+        </p>
+        <h2 className="mt-3 font-mono text-[2.5rem] font-bold tracking-tight text-foreground">
           Get in touch
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+        <p className="mt-4 max-w-2xl text-[14px] leading-[1.7] text-muted-foreground">
           Open to internship and software engineering opportunities. Have a
           project or role in mind? Send me a message.
         </p>
@@ -67,7 +67,7 @@ export function ContactSection() {
               <div>
                 <label
                   htmlFor="name"
-                  className="mb-2 block text-sm font-medium text-foreground"
+                  className="mb-2 block font-mono text-xs font-medium text-foreground"
                 >
                   Name
                 </label>
@@ -79,14 +79,14 @@ export function ContactSection() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, name: e.target.value }))
                   }
-                  className="w-full rounded-lg border border-border bg-card/50 px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
                   placeholder="Your name"
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-foreground"
+                  className="mb-2 block font-mono text-xs font-medium text-foreground"
                 >
                   Email
                 </label>
@@ -98,7 +98,7 @@ export function ContactSection() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, email: e.target.value }))
                   }
-                  className="w-full rounded-lg border border-border bg-card/50 px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
                   placeholder="your@email.com"
                 />
               </div>
@@ -107,7 +107,7 @@ export function ContactSection() {
             <div>
               <label
                 htmlFor="message"
-                className="mb-2 block text-sm font-medium text-foreground"
+                className="mb-2 block font-mono text-xs font-medium text-foreground"
               >
                 Message
               </label>
@@ -119,7 +119,7 @@ export function ContactSection() {
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, message: e.target.value }))
                 }
-                className="w-full resize-none rounded-lg border border-border bg-card/50 px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
+                className="w-full resize-none rounded-[10px] border border-[#1e1e1e] bg-[#111111] px-4 py-2.5 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-[#00d4aa] focus:ring-1 focus:ring-[#00d4aa]"
                 placeholder="Tell me about your project or opportunity..."
               />
             </div>
@@ -127,7 +127,7 @@ export function ContactSection() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:opacity-90 disabled:opacity-50"
+              className="inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-2.5 font-mono text-sm font-medium text-primary-foreground transition-all hover:opacity-90 disabled:opacity-50"
             >
               {status === "sending" ? (
                 <>
@@ -143,14 +143,14 @@ export function ContactSection() {
             </button>
 
             {status === "success" && (
-              <div className="flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-primary">
+              <div className="flex items-center gap-2 rounded-[10px] border border-[#00d4aa]/30 bg-[#00d4aa]/10 px-4 py-3 text-sm text-[#00d4aa]">
                 <CheckCircle2 className="h-4 w-4" />
                 Message sent successfully! I'll get back to you soon.
               </div>
             )}
 
             {status === "error" && (
-              <div className="flex items-center gap-2 rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive-foreground">
+              <div className="flex items-center gap-2 rounded-[10px] border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
                 <AlertCircle className="h-4 w-4" />
                 Failed to send. Please try emailing me directly.
               </div>
@@ -158,8 +158,8 @@ export function ContactSection() {
           </form>
 
           <div className="lg:col-span-2">
-            <div className="rounded-xl border border-border bg-card/50 p-6">
-              <h3 className="mb-4 text-sm font-semibold text-foreground">
+            <div className="rounded-[10px] border border-[#1e1e1e] bg-[#111111] p-6">
+              <h3 className="mb-4 font-mono text-sm font-semibold text-foreground">
                 Other ways to reach me
               </h3>
               <div className="space-y-4">

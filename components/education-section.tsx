@@ -28,7 +28,7 @@ const education = [
 
 export function EducationSection() {
   return (
-    <SectionWrapper id="education" className="px-6 py-25">
+    <SectionWrapper id="education" className="px-6 py-28">
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary">
           // 05 Academics

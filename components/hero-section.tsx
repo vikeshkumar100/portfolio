@@ -8,24 +8,24 @@ const resumeViewUrl = `https://drive.google.com/file/d/${resumeFileId}/view`
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center px-6 pt-20 pb-16">
+    <section className="relative flex min-h-[100dvh] items-center justify-center px-5 sm:px-6 pt-20 pb-16">
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <h1
-          className="animate-fade-up font-mono text-4xl font-bold uppercase tracking-wider text-foreground sm:text-5xl lg:text-7xl"
-          style={{ animationDelay: "0ms" }}
+          className="animate-fade-up font-mono font-bold uppercase tracking-wider text-foreground"
+          style={{ animationDelay: "0ms", fontSize: "clamp(2rem, 8vw, 4.5rem)" }}
         >
           Vikesh Kumar
         </h1>
 
         <p
-          className="animate-fade-up mt-6 font-mono text-sm font-medium uppercase tracking-[0.25em] text-primary sm:text-base"
+          className="animate-fade-up mt-6 font-mono text-xs font-medium uppercase tracking-[0.15em] text-primary sm:text-base sm:tracking-[0.25em]"
           style={{ animationDelay: "150ms" }}
         >
           Backend-Focused Full Stack Developer
         </p>
 
         <div
-          className="animate-fade-up mt-10 flex items-center justify-center gap-4"
+          className="animate-fade-up mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
           style={{ animationDelay: "300ms" }}
         >
           <a
@@ -65,21 +65,21 @@ export function HeroSection() {
         </div>
 
         <div
-          className="animate-fade-up mt-8 flex flex-wrap items-center justify-center gap-3"
+          className="animate-fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
           style={{ animationDelay: "450ms" }}
         >
           <a
             href={resumeViewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-primary/50 px-6 py-3 font-mono text-sm font-medium text-primary transition-all hover:bg-primary/10"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-primary/50 px-6 py-3 font-mono text-sm font-medium text-primary transition-all hover:bg-primary/10 sm:w-auto"
           >
             <Eye className="h-4 w-4" />
             View Resume
           </a>
           <a
             href={resumeDownloadUrl}
-            className="inline-flex items-center gap-2 rounded-lg border border-primary/50 px-6 py-3 font-mono text-sm font-medium text-primary transition-all hover:bg-primary/10"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-primary/50 px-6 py-3 font-mono text-sm font-medium text-primary transition-all hover:bg-primary/10 sm:w-auto"
           >
             <Download className="h-4 w-4" />
             Download Resume
@@ -87,7 +87,7 @@ export function HeroSection() {
         </div>
 
         <p
-          className="animate-fade-up mt-8 whitespace-nowrap font-mono text-xs tracking-wide text-muted-foreground sm:text-sm"
+          className="animate-fade-up mt-8 font-mono text-xs tracking-wide text-muted-foreground sm:text-sm"
           style={{ animationDelay: "600ms" }}
         >
           <span className="text-primary/70">MCA @ VIT</span>{" "}

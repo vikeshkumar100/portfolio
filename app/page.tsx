@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { SkillsSection } from "@/components/skills-section"
 import { ProjectsSection } from "@/components/projects-section"
@@ -7,7 +6,6 @@ import { EducationSection } from "@/components/education-section"
 import { LeetCodeSection } from "@/components/leetcode-section"
 import { GitHubSection } from "@/components/github-section"
 import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
 
 function SectionDivider() {
   return (
@@ -26,7 +24,6 @@ function SectionDivider() {
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
       <HeroSection />
       <SectionDivider />
       <SkillsSection />
@@ -41,7 +38,6 @@ export default function Home() {
       <GitHubSection />
       <SectionDivider />
       <ContactSection />
-      <Footer />
     </main>
   )
 }
